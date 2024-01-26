@@ -1,7 +1,10 @@
 
 package com.mypay.membership.adapter.out.persistence;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -31,5 +34,14 @@ public class MembershipJpaEntity {
         this.email = email;
         this.isValid = isValid;
         this.isCorp = isCorp;
+    }
+
+    public MembershipJpaEntity updateMembership(String name, String address, String email, boolean isValid, boolean isCorp) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.isValid = isValid;
+        this.isCorp = isCorp;
+        return this;
     }
 }
