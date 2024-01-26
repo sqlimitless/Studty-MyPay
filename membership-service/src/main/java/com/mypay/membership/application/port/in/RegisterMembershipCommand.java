@@ -1,29 +1,25 @@
 package com.mypay.membership.application.port.in;
 
-import com.mypay.membership.common.SelfValidating;
+
+import com.mypay.common.SelfValidating;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.jetbrains.annotations.NotNull;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotBlank;
 
 @Builder
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class RegisterMembershipCommand extends SelfValidating<RegisterMembershipCommand> {
 
-    //    @NotNull
-    @NotBlank
+    @NotNull
     private final String name;
-    //    @NotNull
-    @NotBlank
+    @NotNull
     private final String email;
-    //    @NotNull
-    @NotBlank
+    @NotNull
     private final String adress;
 
-    @AssertTrue
     private final boolean isValid;
 
     private final boolean isCorp;
