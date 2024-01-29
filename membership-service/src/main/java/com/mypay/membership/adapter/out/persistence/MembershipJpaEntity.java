@@ -36,12 +36,11 @@ public class MembershipJpaEntity {
         this.isCorp = isCorp;
     }
 
-    public MembershipJpaEntity updateMembership(String name, String address, String email, boolean isValid, boolean isCorp) {
+    public void updateMembership(String name, String address, String email, boolean isValid, boolean isCorp) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.isValid = isValid;
         this.isCorp = isCorp;
-        return this;
     }
 }
