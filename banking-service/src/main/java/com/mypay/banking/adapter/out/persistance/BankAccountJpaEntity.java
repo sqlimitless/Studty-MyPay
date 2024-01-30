@@ -11,11 +11,11 @@ import javax.persistence.*;
 @Table
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RegisteredBankAccountJpaEntity {
+public class BankAccountJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long registeredBankAccountId;
+    private Long bankAccountId;
     private String membershipId;
     private String bankId;
     private String bankAccountNumber;
@@ -23,8 +23,8 @@ public class RegisteredBankAccountJpaEntity {
 
 
     @Builder
-    public RegisteredBankAccountJpaEntity(Long registeredBankAccountId, String membershipId, String bankId, String bankAccountNumber, boolean linkedStatusIsValid) {
-        this.registeredBankAccountId = registeredBankAccountId;
+    public BankAccountJpaEntity(Long bankAccountId, String membershipId, String bankId, String bankAccountNumber, boolean linkedStatusIsValid) {
+        this.bankAccountId = bankAccountId;
         this.membershipId = membershipId;
         this.bankId = bankId;
         this.bankAccountNumber = bankAccountNumber;
