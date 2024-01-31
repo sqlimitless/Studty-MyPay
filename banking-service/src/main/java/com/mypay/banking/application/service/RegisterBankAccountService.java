@@ -2,8 +2,8 @@ package com.mypay.banking.application.service;
 
 import com.mypay.banking.adapter.out.external.bank.BankAccount;
 import com.mypay.banking.adapter.out.external.bank.GetBankAccountRequest;
-import com.mypay.banking.adapter.out.persistance.RegisteredBankAccountMapper;
-import com.mypay.banking.adapter.out.persistance.BankAccountJpaEntity;
+import com.mypay.banking.adapter.out.persistence.RegisteredBankAccountMapper;
+import com.mypay.banking.adapter.out.persistence.BankAccountJpaEntity;
 import com.mypay.banking.application.port.in.RegisterBankAccountCommand;
 import com.mypay.banking.application.port.in.RegisterBankAccountUseCase;
 import com.mypay.banking.application.port.out.RegisterBankAccountPort;

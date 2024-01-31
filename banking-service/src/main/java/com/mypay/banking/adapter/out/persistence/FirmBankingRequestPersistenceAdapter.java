@@ -1,4 +1,4 @@
-package com.mypay.banking.adapter.out.persistance;
+package com.mypay.banking.adapter.out.persistence;
 
 import com.mypay.banking.application.port.out.RequestFirmBankingPort;
 import com.mypay.banking.domain.FirmBankingRequest;

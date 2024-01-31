@@ -1,7 +1,7 @@
 package com.mypay.banking.application.service;
 
-import com.mypay.banking.adapter.out.persistance.BankAccountJpaEntity;
-import com.mypay.banking.adapter.out.persistance.FindBankAccountMapper;
+import com.mypay.banking.adapter.out.persistence.BankAccountJpaEntity;
+import com.mypay.banking.adapter.out.persistence.FindBankAccountMapper;
 import com.mypay.banking.application.port.in.FindBankAccountCommand;
 import com.mypay.banking.application.port.in.FindBankAccountUseCase;
 import com.mypay.banking.application.port.out.FindBankAccountPort;

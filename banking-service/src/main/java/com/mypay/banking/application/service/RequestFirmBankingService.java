@@ -2,8 +2,8 @@ package com.mypay.banking.application.service;
 
 import com.mypay.banking.adapter.out.external.bank.ExternalFirmBankingRequest;
 import com.mypay.banking.adapter.out.external.bank.FirmBankingResult;
-import com.mypay.banking.adapter.out.persistance.FirmBankingRequestJpaEntity;
-import com.mypay.banking.adapter.out.persistance.FirmBankingRequestMapper;
+import com.mypay.banking.adapter.out.persistence.FirmBankingRequestJpaEntity;
+import com.mypay.banking.adapter.out.persistence.FirmBankingRequestMapper;
 import com.mypay.banking.application.port.in.RequestFirmBankingCommand;
 import com.mypay.banking.application.port.in.RequestFirmBankingUseCase;
 import com.mypay.banking.application.port.out.RequestExternalFirmBankingPort;
