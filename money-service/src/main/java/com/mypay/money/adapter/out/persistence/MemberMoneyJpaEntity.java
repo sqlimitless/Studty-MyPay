@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.NoSuchElementException;
 
 @Entity
 @Table(name = "member_money")
@@ -22,4 +23,18 @@ public class MemberMoneyJpaEntity {
     private Long memberMoneyId;
     private Long membershipId;
     private int balance;
+
+    public void increaseMoney(int increaseMoneyAmount){
+        this.balance += increaseMoneyAmount;
+    }
+
+    public void decreaseMoney(int decreaseMoneyAmount){
+        int balance = this.balance - decreaseMoneyAmount;
+        if(balance < 0){
+            throw new NoSuchElementException("잔고부족");
+        } else {
+            this.balance = balance;
+        }
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.mypay.money.adapter.out.persistence;
 
 import com.mypay.common.PersistenceAdapter;
+import com.mypay.money.application.port.out.DecreaseMoneyPort;
 import com.mypay.money.application.port.out.IncreaseMoneyPort;
 import com.mypay.money.domain.MemberMoney;
 import com.mypay.money.domain.MoneyChangingRequest;
@@ -13,7 +14,7 @@ import java.util.List;
 @PersistenceAdapter
 @Component
 @RequiredArgsConstructor
-public class MoneyChangingRequestPersistenceAdapter implements IncreaseMoneyPort {
+public class MoneyChangingRequestPersistenceAdapter implements IncreaseMoneyPort, DecreaseMoneyPort {
 
     private final SpringDataMoneyChangingRequestRepository moneyChangingRequestRepository;
 
@@ -35,21 +36,31 @@ public class MoneyChangingRequestPersistenceAdapter implements IncreaseMoneyPort
 
     @Override
     public MemberMoneyJpaEntity increaseMoney(MemberMoney memberMoney) {
-        MemberMoneyJpaEntity entity = null;
+        MemberMoneyJpaEntity entity;
         List<MemberMoneyJpaEntity> entityList = memberMoneyRepository.findByMembershipId(Long.parseLong(memberMoney.getMembershipId()));
-
-
-//            entity.setBalance(entity.getBalance() + increaseMoneyAmount);
         if (entityList != null) {
             entity = entityList.get(0);
-            memberMoneyRepository.save(entity);
+            entity.increaseMoney(memberMoney.getBalance());
         } else {
-//            entity = new MemberMoneyJpaEntity(
-//                    Long.parseLong(memberId.getMembershipId()),
-//                    increaseMoneyAmount
-//            );
-//            entity = memberMoneyRepository.save(entity);
+            entity = MemberMoneyJpaEntity.builder()
+                    .membershipId(Long.parseLong(memberMoney.getMembershipId()))
+                    .balance(memberMoney.getBalance())
+                    .build();
+            memberMoneyRepository.save(entity);
         }
         return entity;
-        }
     }
+
+    @Override
+    public MemberMoneyJpaEntity decreaseMoney(MemberMoney memberMoney) {
+        MemberMoneyJpaEntity entity;
+        List<MemberMoneyJpaEntity> entityList = memberMoneyRepository.findByMembershipId(Long.parseLong(memberMoney.getMembershipId()));
+        if (entityList != null) {
+            entity = entityList.get(0);
+            entity.decreaseMoney(memberMoney.getBalance());
+        } else {
+            entity = null;
+        }
+        return entity;
+    }
+}
