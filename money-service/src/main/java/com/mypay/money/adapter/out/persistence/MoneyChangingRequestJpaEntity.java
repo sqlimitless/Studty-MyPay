@@ -1,5 +1,6 @@
 package com.mypay.money.adapter.out.persistence;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mypay.money.domain.ChangingMoneyStatus;
 import com.mypay.money.domain.ChangingType;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class MoneyChangingRequestJpaEntity {
     @Enumerated(EnumType.STRING)
     private ChangingType moneyChangingType;
     private int moneyAmount;
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime timestamp;
     @Enumerated(EnumType.STRING)
     private ChangingMoneyStatus changingMoneyStatus;
