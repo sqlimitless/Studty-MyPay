@@ -18,9 +18,9 @@ dependencies {
     implementation project(path: ':common')
 
     testImplementation 'junit:junit:4.13.1'
-    runtimeOnly 'com.h2database:h2'
+//    runtimeOnly 'com.h2database:h2'
 
-//    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'mysql:mysql-connector-java'
 }
 
 docker {
