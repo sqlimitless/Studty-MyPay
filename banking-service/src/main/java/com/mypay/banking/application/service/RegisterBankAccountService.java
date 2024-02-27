@@ -6,6 +6,8 @@ import com.mypay.banking.adapter.out.persistence.RegisteredBankAccountMapper;
 import com.mypay.banking.adapter.out.persistence.BankAccountJpaEntity;
 import com.mypay.banking.application.port.in.RegisterBankAccountCommand;
 import com.mypay.banking.application.port.in.RegisterBankAccountUseCase;
+import com.mypay.banking.application.port.out.GetMembershipPort;
+import com.mypay.banking.application.port.out.MembershipStatus;
 import com.mypay.banking.application.port.out.RegisterBankAccountPort;
 import com.mypay.banking.application.port.out.RequestBankAccountInfoPort;
 import com.mypay.banking.domain.RegisteredBankAccount;
@@ -20,9 +22,16 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
 
     private final RegisterBankAccountPort registerBankAccountPort;
     private final RequestBankAccountInfoPort requestBankAccountInfoPort;
+    private final GetMembershipPort getMembershipPort;
 
     @Override
     public RegisteredBankAccount registerBankAccount(RegisterBankAccountCommand registerBankAccountCommand) {
+
+        MembershipStatus membershipStatus = getMembershipPort.getMembership(registerBankAccountCommand.getMembershipId());
+        if(!membershipStatus.isValid()) {
+            return null;
+        }
+
         BankAccount bankAccountInfo = requestBankAccountInfoPort.getBankAccountInfo(
                 GetBankAccountRequest.builder()
                         .bankName(registerBankAccountCommand.getBankId())
